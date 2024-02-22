@@ -1,12 +1,14 @@
-import { CarsList } from "components/СarsList/CarsList";
-import React from "react";
+import {
+  Container,
+  ContainerCard,
+} from 'components/MainComponent/MainComponent.styled';
+import { CarsList } from 'components/СarsList/CarsList';
+import React from 'react';
 
 export default function CatalogPage() {
-    return (
-        <>
-        <p>Catalog Cars</p>
-        <CarsList/>
-        </>
-        
-    )
+  return (
+    <Container>
+        <CarsList />
+    </Container>
+  );
 }

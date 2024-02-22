@@ -2,6 +2,20 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCars } from 'redux/cars/operations';
 import { selectCars, selectVisibleCars } from 'redux/cars/selectors';
+import {
+  ButtonLearnMore,
+  CarAboutContainer,
+  ContainerAbout,
+  ContainerAllCard,
+  ContainerCard,
+  ContainerImg,
+  ContainerInfo,
+  IteamAbout,
+  ListAbout,
+  Span,
+  SpanModel,
+  Title,
+} from './CarsList.styled';
 
 export const CarsList = () => {
   const carsFilter = useSelector(selectCars);
@@ -13,7 +27,7 @@ export const CarsList = () => {
 
   return (
     <div>
-      <ul>
+      <ContainerAllCard>
         {carsFilter.map(car => {
           const {
             id,
@@ -26,50 +40,53 @@ export const CarsList = () => {
             type,
             mileage,
             rentalPrice,
-            functionalities
+            functionalities,
           } = car;
           const addressSplit = address.split(', ');
           return (
-            <li key={id}>
-              <div>
-                <img src={img} alt={make} />
-              </div>
-              <div>
-                <p>
-                  {make} <span>{model}</span>, {year}
-                </p>
-                <p>{rentalPrice}</p>
-              </div>
-              <div>
-                <ul>
-                  <li>
-                    {addressSplit[1]}
-                    <span />
-                  </li>
-                  <li>
-                    {addressSplit[2]}
-                    <span />
-                  </li>
-                  <li>{rentalCompany}</li>
-                </ul>
-                <ul>
-                  <li>
-                    {type}
-                    <span />
-                  </li>
-                  <li>
-                    {model}
-                    <span />
-                  </li>
-                  <li>{mileage}<span/></li>
-                  <li>{functionalities[0]}</li>
-                </ul>
-                <button>Learn More</button>
-              </div>
-            </li>
+            <ContainerCard key={id}>
+              <ContainerImg src={img} alt={make} />
+              <ContainerInfo>
+                <Title>
+                  {make} <SpanModel>{model}</SpanModel>, {year}
+                </Title>
+                <Title>{rentalPrice}</Title>
+              </ContainerInfo>
+              <CarAboutContainer>
+                <ContainerAbout>
+                  <IteamAbout>
+                    <ListAbout>
+                      {addressSplit[1]}
+                      <Span />
+                    </ListAbout>
+                    <ListAbout>
+                      {addressSplit[2]}
+                      <Span />
+                    </ListAbout>
+                    <ListAbout>{rentalCompany}</ListAbout>
+                  </IteamAbout>
+                  <IteamAbout>
+                    <ListAbout>
+                      {type}
+                      <Span />
+                    </ListAbout>
+                    <ListAbout>
+                      {model}
+                      <Span />
+                    </ListAbout>
+                    <ListAbout>
+                      {mileage}
+                      <Span />
+                    </ListAbout>
+                    <ListAbout>{functionalities[0]}</ListAbout>
+                  </IteamAbout>
+                </ContainerAbout>
+              </CarAboutContainer>
+              <ButtonLearnMore>Learn More</ButtonLearnMore>
+            </ContainerCard>
           );
         })}
-      </ul>
+      </ContainerAllCard>
     </div>
   );
 };
