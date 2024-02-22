@@ -1,41 +1,50 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import { contactReducer } from './contacts/contactSlice';
-import { filterReducer } from './contacts/filterSlice';
-import { authReducer } from './auth/authSlice';
-import storage from 'redux-persist/lib/storage';
-import {
-  persistReducer,
-  persistStore,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-} from 'redux-persist';
+// import { configureStore, combineReducers } from '@reduxjs/toolkit';
 
-const authPersistConfig = {
-  key: 'auth',
-  storage,
-  whitelist: ['token'],
-};
+// import { authReducer } from './auth/authSlice';
+// import storage from 'redux-persist/lib/storage';
+// import {
+//   persistReducer,
+//   persistStore,
+//   FLUSH,
+//   REHYDRATE,
+//   PAUSE,
+//   PERSIST,
+//   PURGE,
+//   REGISTER,
+// } from 'redux-persist';
 
-const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
+// const authPersistConfig = {
+//   key: 'auth',
+//   storage,
+//   whitelist: ['token'],
+// };
 
-const rootReducer = combineReducers({
-  contact: contactReducer,
-  filter: filterReducer,
-  auth: persistedAuthReducer,
-});
+// const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
+
+// const rootReducer = combineReducers({
+//   auth: persistedAuthReducer,
+// });
+
+// export const store = configureStore({
+//   reducer: rootReducer,
+//   middleware: getDefaultMiddleware =>
+//     getDefaultMiddleware({
+//       serializableCheck: {
+//         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+//       },
+//     }),
+// });
+
+// export const persistor = persistStore(store);
+
+
+import { configureStore } from "@reduxjs/toolkit";
+import { carReducer } from "./cars/carSlice";
+import { filterReducer } from "./cars/filterSlice";
 
 export const store = configureStore({
-  reducer: rootReducer,
-  middleware: getDefaultMiddleware =>
-    getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
-    }),
-});
-
-export const persistor = persistStore(store);
+    reducer: {
+        car: carReducer,
+        filter: filterReducer,
+    }
+})
