@@ -1,12 +1,10 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchCars } from 'redux/cars/operations';
-import { selectCars, selectVisibleCars } from 'redux/cars/selectors';
+import { useContext } from 'react';
+import { MainContext } from 'components/Helpers/Context';
+
 import {
   ButtonLearnMore,
   CarAboutContainer,
   ContainerAbout,
-  ContainerAllCard,
   ContainerCard,
   ContainerImg,
   ContainerInfo,
@@ -17,76 +15,54 @@ import {
   Title,
 } from './CarsList.styled';
 
-export const CarsList = () => {
-  const carsFilter = useSelector(selectCars);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchCars());
-  }, [dispatch]);
+export const CarsList = ({ carDetails }) => {
+  const { setIsOpen, setCarData } = useContext(MainContext);
+  const handlerModalOpen = () => {
+    setCarData(carDetails);
+    setIsOpen(true);
+  };
+  const addressSplit = carDetails?.address.split(', ');
 
   return (
-    <div>
-      <ContainerAllCard>
-        {carsFilter.map(car => {
-          const {
-            id,
-            make,
-            img,
-            model,
-            year,
-            address,
-            rentalCompany,
-            type,
-            mileage,
-            rentalPrice,
-            functionalities,
-          } = car;
-          const addressSplit = address.split(', ');
-          return (
-            <ContainerCard key={id}>
-              <ContainerImg src={img} alt={make} />
-              <ContainerInfo>
-                <Title>
-                  {make} <SpanModel>{model}</SpanModel>, {year}
-                </Title>
-                <Title>{rentalPrice}</Title>
-              </ContainerInfo>
-              <CarAboutContainer>
-                <ContainerAbout>
-                  <IteamAbout>
-                    <ListAbout>
-                      {addressSplit[1]}
-                      <Span />
-                    </ListAbout>
-                    <ListAbout>
-                      {addressSplit[2]}
-                      <Span />
-                    </ListAbout>
-                    <ListAbout>{rentalCompany}</ListAbout>
-                  </IteamAbout>
-                  <IteamAbout>
-                    <ListAbout>
-                      {type}
-                      <Span />
-                    </ListAbout>
-                    <ListAbout>
-                      {model}
-                      <Span />
-                    </ListAbout>
-                    <ListAbout>
-                      {mileage}
-                      <Span />
-                    </ListAbout>
-                    <ListAbout>{functionalities[0]}</ListAbout>
-                  </IteamAbout>
-                </ContainerAbout>
-              </CarAboutContainer>
-              <ButtonLearnMore>Learn More</ButtonLearnMore>
-            </ContainerCard>
-          );
-        })}
-      </ContainerAllCard>
-    </div>
+    <ContainerCard>
+      <ContainerImg src={carDetails.img} alt={carDetails.make} />
+      <ContainerInfo>
+        <Title>
+          {carDetails.make} <SpanModel>{carDetails.model}</SpanModel>, {carDetails.year}
+        </Title>
+        <Title>{carDetails.rentalPrice}</Title>
+      </ContainerInfo>
+      <CarAboutContainer>
+        <ContainerAbout>
+          <IteamAbout>
+            <ListAbout>
+              {addressSplit[1]}
+              <Span />
+            </ListAbout>
+            <ListAbout>
+              {addressSplit[2]}
+              <Span />
+            </ListAbout>
+            <ListAbout>{carDetails.rentalCompany}</ListAbout>
+          </IteamAbout>
+          <IteamAbout>
+            <ListAbout>
+              {carDetails.type}
+              <Span />
+            </ListAbout>
+            <ListAbout>
+              {carDetails.model}
+              <Span />
+            </ListAbout>
+            <ListAbout>
+              {carDetails.mileage}
+              <Span />
+            </ListAbout>
+            <ListAbout>{carDetails.functionalities[0]}</ListAbout>
+          </IteamAbout>
+        </ContainerAbout>
+      </CarAboutContainer>
+      <ButtonLearnMore onClick={handlerModalOpen}>Learn More</ButtonLearnMore>
+    </ContainerCard>
   );
 };

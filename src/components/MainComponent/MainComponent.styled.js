@@ -1,12 +1,16 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  padding: 150px 128px;
+  padding: 30px 150px 128px;
   margin-left: auto;
   margin-right: auto;
+  display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 50px;
 `;
 
-export const ContainerCard = styled.div`
+export const ContainerAllCard = styled.div`
   display: flex;
   flex-wrap: wrap;
   column-gap: 29px;
@@ -15,4 +19,5 @@ export const ContainerCard = styled.div`
   margin-left: auto;
   width: 1185px;
 `;
+
 

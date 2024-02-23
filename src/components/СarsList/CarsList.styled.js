@@ -1,31 +1,20 @@
 import styled from 'styled-components';
 
-export const ContainerAllCard = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: 29px;
-  row-gap: 50px;
-  margin-right: auto;
-  margin-left: auto;
-  width: 1185px;
-`;
-
-export const ContainerCard = styled.li`
+export const ContainerCard = styled.div`
   width: 274px;
   height: 426px;
   position: relative;
-  cursor: pointer;
 `;
 
-export const ContainerImg = styled.img`
+export const ContainerImg = styled.div`
   width: 274px;
   height: 268px;
   margin-bottom: 14px;
   border-radius: 14px;
-  background-size: cover;
-  background-position: center;
   background: ${({ src }) =>
     `linear-gradient(180deg, rgba(18, 20, 23, 0.5) 2.5%, rgba(18, 20, 23, 0) 41.071%), url(${src})`};
+  background-position: center;
+  background-size: cover;
 `;
 export const ContainerInfo = styled.div`
   display: flex;
