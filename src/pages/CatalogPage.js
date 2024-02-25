@@ -1,5 +1,6 @@
 import { MainContext } from 'components/Helpers/Context';
 import {
+  ButtonLoadMore,
   Container,
   ContainerAllCard,
 } from 'components/MainComponent/MainComponent.styled';
@@ -10,9 +11,11 @@ import { useDispatch } from 'react-redux';
 import { fetchCars } from 'redux/cars/operations';
 import { useCars } from 'components/hooks/useCars';
 import { CarDetailsInfo } from 'components/CarDetailsInfo/CarDetailsInfo';
+import Filter from 'components/Filter/Filter';
+
 
 export default function CatalogPage() {
-  const { isOpen, setIsOpen, carData, setCarData } = useContext(MainContext);
+  const { isOpen, setIsOpen, carData } = useContext(MainContext);
   const dispatch = useDispatch();
   const { getAllCars } = useCars();
 
@@ -23,12 +26,13 @@ export default function CatalogPage() {
   return (
     <>
       <Container>
+        <Filter/>
         <ContainerAllCard>
           {getAllCars.map((item, i) => (
             <CarsList key={i} carDetails={item} />
           ))}
         </ContainerAllCard>
-        <button type="button">Load more</button>
+        <ButtonLoadMore type="button">Load more</ButtonLoadMore>
       </Container>
       <ModalWindow isOpen={isOpen} onRequestClose={() => setIsOpen(false)}>
         <CarDetailsInfo carAllInfo={carData}/>

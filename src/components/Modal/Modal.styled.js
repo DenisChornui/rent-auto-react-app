@@ -58,10 +58,9 @@ export const ButtonClose = styled.button`
 export const IconClose = styled(Icon)`
 	position: absolute;
 	transform: translate(-50%, -50%);
-	fill: currentcolor;
 	width: 24px;
 	height: 24px;
-	stroke: currentcolor;
+	stroke: rgb(18, 20, 23);;
 	transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
 	&:hover,
 	&:focus {

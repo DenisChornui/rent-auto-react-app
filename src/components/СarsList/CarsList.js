@@ -8,12 +8,17 @@ import {
   ContainerCard,
   ContainerImg,
   ContainerInfo,
+  FavoriteButton,
   IteamAbout,
   ListAbout,
   Span,
   SpanModel,
+  SvgStyled,
   Title,
 } from './CarsList.styled';
+import { useDispatch, useSelector } from 'react-redux';
+import { addFavorite, removeFavorite } from 'redux/favorite/favoriteSlice';
+import { favoriteCars } from 'redux/favorite/selectors';
 
 export const CarsList = ({ carDetails }) => {
   const { setIsOpen, setCarData } = useContext(MainContext);
@@ -21,31 +26,25 @@ export const CarsList = ({ carDetails }) => {
     setCarData(carDetails);
     setIsOpen(true);
   };
+  const dispatch = useDispatch();
   const addressSplit = carDetails?.address.split(', ');
+  const favoriteImages = useSelector(favoriteCars);
 
+  const isFavorite = favoriteImages.some(favorite => favorite.id === carDetails.id);
 
-
-  const ImageComponent = ({ image }) => {
-    const dispatch = useDispatch();
-  
-    const handleToggleFavorite = () => {
-      // Проверяем, есть ли изображение в избранном
-      const isFavorite = // Реализуйте логику проверки
-  
-      if (isFavorite) {
-        // Если изображение уже в избранном, удаляем его
-        dispatch(removeFavorite(image));
-      } else {
-        // Если изображение не в избранном, добавляем его
-        dispatch(addFavorite(image));
-      }
-    };
+  const handleToggleFavorite = () => {
+    if (isFavorite) {
+      dispatch(removeFavorite(carDetails));
+    } else {
+      dispatch(addFavorite(carDetails));
+    }
+  };
 
   return (
     <ContainerCard>
-      <button>
-        <svg name='icon-heart'/>
-      </button>
+      <FavoriteButton onClick={handleToggleFavorite} isFavorite={isFavorite}> 
+        <SvgStyled name='icon-heart'/>
+      </FavoriteButton>
       <ContainerImg src={carDetails.img} alt={carDetails.make} />
       <ContainerInfo>
         <Title>
