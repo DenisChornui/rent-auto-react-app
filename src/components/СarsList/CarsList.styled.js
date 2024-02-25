@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {Icon} from 'components/Icon/Icon'
 
 export const ContainerCard = styled.div`
   width: 274px;
@@ -112,7 +113,7 @@ export const FavoriteButton = styled.button`
   padding: 0;
 `;
 
-export const SvgStyled = styled.svg`
+export const SvgStyled = styled(Icon)`
   position: absolute;
   transform: translate(-50%, -50%);
   width: 24px;
