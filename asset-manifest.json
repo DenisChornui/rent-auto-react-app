@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/rent-auto-react-app/static/css/main.cd2e038f.css",
+    "main.js": "/rent-auto-react-app/static/js/main.495f0df9.js",
+    "static/media/icon-spraite.svg": "/rent-auto-react-app/static/media/icon-spraite.dc0a137275781c3c52a4b6673bd89f95.svg",
+    "index.html": "/rent-auto-react-app/index.html",
+    "main.cd2e038f.css.map": "/rent-auto-react-app/static/css/main.cd2e038f.css.map",
+    "main.495f0df9.js.map": "/rent-auto-react-app/static/js/main.495f0df9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cd2e038f.css",
+    "static/js/main.495f0df9.js"
+  ]
+}
