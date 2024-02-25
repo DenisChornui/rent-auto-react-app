@@ -100,22 +100,22 @@ export const ButtonLearnMore = styled.button`
 `;
 
 export const FavoriteButton = styled.button`
-	position: absolute;
-	top: 14px;
-	right: 14px;
-	width: 18px;
-	height: 18px;
-	background-color: transparent;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-	padding: 0;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 18px;
+  height: 18px;
+  background-color: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0;
 `;
 
 export const SvgStyled = styled.svg`
-position: absolute;
-	transform: translate(-50%, -50%);
-	width: 24px;
-	height: 24px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
   fill: ${props => (props.isFavorite ? 'blue' : '#ccc')};
 `;

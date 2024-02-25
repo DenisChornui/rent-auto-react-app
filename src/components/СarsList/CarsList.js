@@ -43,7 +43,7 @@ export const CarsList = ({ carDetails }) => {
   return (
     <ContainerCard>
       <FavoriteButton onClick={handleToggleFavorite} isFavorite={isFavorite}> 
-        <SvgStyled name='icon-heart'/>
+        <SvgStyled name='heart'/>
       </FavoriteButton>
       <ContainerImg src={carDetails.img} alt={carDetails.make} />
       <ContainerInfo>

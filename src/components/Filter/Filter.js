@@ -1,5 +1,5 @@
-import { Formik, Field } from "formik";
-import * as Yup from "yup";
+import { Formik, Field } from 'formik';
+import * as Yup from 'yup';
 import {
   ButtonSearch,
   Label,
@@ -7,10 +7,9 @@ import {
   Forma,
   InputField,
   MilageInputs,
-} from "./Filter.styled";
-import { useDispatch } from "react-redux";
-import { filterValue } from "redux/filter/filterSlice";
-
+} from './Filter.styled';
+import { useDispatch } from 'react-redux';
+import { filterValue } from 'redux/filter/filterSlice';
 
 const schema = Yup.object().shape({
   make: Yup.string(),
@@ -22,19 +21,37 @@ const Filter = () => {
   const dispatch = useDispatch();
 
   const makes = [
-    "Buick", "Volvo", "HUMMER", "Subaru", "Mitsubishi", "Nissan",
-    "Lincoln", "GMC", "Hyundai", "MINI", "Bentley", "Mercedes-Benz",
-    "Aston Martin", "Pontiac", "Lamborghini", "Audi", "BMW", "Chevrolet",
-    "Mercedes-Benz", "Chrysler", "Kia", "Land"
+    'Buick',
+    'Volvo',
+    'HUMMER',
+    'Subaru',
+    'Mitsubishi',
+    'Nissan',
+    'Lincoln',
+    'GMC',
+    'Hyundai',
+    'MINI',
+    'Bentley',
+    'Mercedes-Benz',
+    'Aston Martin',
+    'Pontiac',
+    'Lamborghini',
+    'Audi',
+    'BMW',
+    'Chevrolet',
+    'Mercedes-Benz',
+    'Chrysler',
+    'Kia',
+    'Land',
   ];
 
   return (
     <Formik
       initialValues={{
-        make: "",
-        price: "",
-        mileageFrom: "",
-        mileageTo: "",
+        make: '',
+        price: '',
+        mileageFrom: '',
+        mileageTo: '',
       }}
       validationSchema={schema}
       onSubmit={(values, action) => {
@@ -48,38 +65,35 @@ const Filter = () => {
           <Label htmlFor="make">Car brand</Label>
           <Field
             style={{
-              borderRadius: "14px",
+              borderRadius: '14px',
 
-              width: "224px",
-              height: "48px",
-              backgroundColor: "#f7f7fb",
-              border: "none",
-              fontWeight: "500",
-              fontSize: "18px",
+              width: '224px',
+              height: '48px',
+              backgroundColor: '#f7f7fb',
+              border: 'none',
+              fontWeight: '500',
+              fontSize: '18px',
 
-              lineHeight: "1.11111",
-              color: "#121417",
-              padding: "14px 89px 14px 18px",
+              lineHeight: '1.11111',
+              color: '#121417',
+              padding: '14px 89px 14px 18px',
             }}
             name="make"
             as="select"
             placeholder="Enter the text"
           >
-             <option value="">All</option>
-             {makes.map((make, index) => (
-  <option key={index} value={make}>{make}</option>
-))}
+            <option value="">All</option>
+            {makes.map((make, index) => (
+              <option key={index} value={make}>
+                {make}
+              </option>
+            ))}
           </Field>
         </InputContainer>
 
         <InputContainer>
           <Label htmlFor="price">Price/ 1 hour</Label>
-          <InputField
-            className="inputPrice"
-            
-            name="price"
-            placeholder="To $"
-          />
+          <InputField className="inputPrice" name="price" placeholder="To $" />
         </InputContainer>
 
         <InputContainer>

@@ -19,7 +19,7 @@ const ModalWindow = ({ children, isOpen, onRequestClose }) => {
       contentLabel="onRequestClose"
     >
       <ButtonClose onClick={onRequestClose}>
-        <IconClose name="icon-cross" />
+        <IconClose name="cross" />
       </ButtonClose>
       {children}
     </ModalCar>
@@ -27,7 +27,3 @@ const ModalWindow = ({ children, isOpen, onRequestClose }) => {
 };
 
 export default ModalWindow;
-
-
-
-

@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Form } from "formik";
+import styled from 'styled-components';
+import { Form } from 'formik';
 
 export const ButtonSearch = styled.button`
   display: flex;
@@ -22,7 +22,7 @@ export const ButtonSearch = styled.button`
 `;
 
 export const Label = styled.label`
-  font-family: "Manrope", sans-serif;
+  font-family: 'Manrope', sans-serif;
   font-weight: 500;
   font-size: 14px;
 

@@ -8,5 +8,3 @@ export const Icon = ({ name, ...otherProps }) => {
     </svg>
   );
 };
-
-

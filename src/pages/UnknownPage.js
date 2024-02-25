@@ -1,14 +1,14 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const UnknownPage = () => {
-	const navigate = useNavigate();
+  const navigate = useNavigate();
 
-	useEffect(() => {
-		navigate('/');
-	}, [navigate]);
+  useEffect(() => {
+    navigate('/');
+  }, [navigate]);
 
-	return null;
+  return null;
 };
 
 export default UnknownPage;

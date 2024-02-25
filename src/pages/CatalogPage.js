@@ -13,7 +13,6 @@ import { useCars } from 'components/hooks/useCars';
 import { CarDetailsInfo } from 'components/CarDetailsInfo/CarDetailsInfo';
 import Filter from 'components/Filter/Filter';
 
-
 export default function CatalogPage() {
   const { isOpen, setIsOpen, carData } = useContext(MainContext);
   const dispatch = useDispatch();
@@ -26,7 +25,7 @@ export default function CatalogPage() {
   return (
     <>
       <Container>
-        <Filter/>
+        <Filter />
         <ContainerAllCard>
           {getAllCars.map((item, i) => (
             <CarsList key={i} carDetails={item} />
@@ -35,7 +34,7 @@ export default function CatalogPage() {
         <ButtonLoadMore type="button">Load more</ButtonLoadMore>
       </Container>
       <ModalWindow isOpen={isOpen} onRequestClose={() => setIsOpen(false)}>
-        <CarDetailsInfo carAllInfo={carData}/>
+        <CarDetailsInfo carAllInfo={carData} />
       </ModalWindow>
     </>
   );
